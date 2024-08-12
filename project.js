@@ -106,19 +106,30 @@ console.log(factorial(n));
 // Function to check prime number
 
 function checkPrime(pNum) {
-  let i,
-    show = true;
-  for (i = 2; i <= pNum - 1; i++) {
-    if (pNum % i == 0) {
-      show = false;
-      break;
+  if (pNum <= 1) {
+    console.log(pNum + " is not prime");
+    return;
+  }
+  if (pNum === 2) {
+    console.log(pNum + " is prime");
+    return;
+  }
+  if (pNum % 2 === 0) {
+    console.log(pNum + " is not prime");
+    return;
+  }
+
+  for (let i = 3; i <= Math.sqrt(pNum); i += 2) {
+    if (pNum % i === 0) {
+      console.log(pNum + " is not prime");
+      return;
     }
   }
-  if (show == true) console.log(pNum + " is prime");
-  else console.log(pNum + " is not prime");
+
+  console.log(pNum + " is prime");
 }
 
-console.log(checkPrime(4));
+console.log(checkPrime(8));
 
 // Fibonacci Sequence: Implement a function to generate the Fibonacci sequence up to a given number of terms. (search on the net )
 const number = parseInt(prompt("Enter the number of terms: "));
